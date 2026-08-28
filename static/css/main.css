@@ -273,14 +273,10 @@ aside{ font-family: var(--font-ui); font-size: 0.95rem; }
    8. LOGIN / SIGNUP / WELCOME PAGES
    ========================================================== */
 body.login-page{
-  /* ---------------------------------------------------------
-     BACKGROUND IMAGE: replace the url() below with your image.
-     Example: background-image: url("images/hero-bg.jpg");
-     --------------------------------------------------------- */
   background-image:
     linear-gradient(to bottom, var(--color-overlay-top), var(--color-overlay-bottom)),
     url("");
-  background-color: var(--color-bg); /* fallback shown until an image is added */
+  background-color: var(--color-bg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
