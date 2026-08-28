@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Art Form of the Day</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+  }
+
+  /* Top Bar */
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+  }
+
+  .topbar button {
+    background: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .top-title {
+    margin-left: 20px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 60px; /* below top bar */
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background: #222;
+    color: white;
+    padding: 20px;
+  }
+
+  .sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .sidebar a:hover {
+    color: #ddd;
+  }
+
+  /* Main Content */
+  .content {
+    margin-left: 220px;
+    margin-top: 80px;
+    padding: 20px;
+  }
+
+  .section {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <button onclick="window.location.href='home_page.html'">Home</button>
+  <span class="top-title">Before We Forget</span>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h3>Explore</h3>
+  <a href="Craft_page.html">Art</a>
+  <a href="Literature_page.html">Literature</a>
+  <a href="Events_page.html">Events</a>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h1 style = "text-align: center;"> Events</h1>
+
+  <div class="section">
+    <h2>Artisan Fairs</h2>
+    <p>Artisans are skilled workers who make practical or decorative objects by hand. Often many artisans go to
+        fairs to sell their products and makes a good day out. The Lost Trades Fair at Hanging Rock showcases the work of many artisans 
+        who participate in trades which are dying out. </p>
+    <a href="https://en.wikipedia.org/wiki/Artisan" target="_blank" rel="nofollow">
+        Click here for more information
+    </a>
+  </div>
+
+  <div class="section">
+    <h2>Videos</h2>
+    <p>A video advertising the Lost Trades Fair</p>
+    <video width = "800" height = "450" controls>
+        <source src="https://video.wixstatic.com/video/25060b_00a97324ed1d4a2ca800e3236c6f35e6/1080p/mp4/file.mp4" type="video/mp4">
+        <source src="vid.ogg" type="video/ogg">
+    </video>
+   </div>
+
+  <div class="section">
+    <h2>Communities</h2>
+    <p>Join groups, forums, and local craft circles.</p>
+    <a href = "https://www.facebook.com/sydneyartisans/"
+    target = "_blank" rel = "external nofollow">
+    <img src="facebook_logo.png" alt="facebook-icon-logo"
+     width = "48" height="48" /><br />
+        Facebook groups
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
