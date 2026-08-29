@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block bodyclass %}login-page{% endblock %}
+
+{% block head %}
+<a href="{{ url_for('index') }}" class="logo">Your Logo</a>
+<p class="tagline">Create your account</p>
+{% endblock %}
+
+{% block content %}
+<div class="login-card">
+  <form id="signup-form" action="{{ url_for('signup') }}" method="post" novalidate>
+    <div class="field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required>
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" required>
+      <p class="field-error" id="email-error"></p>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="new-password" required>
+      <p class="field-error" id="password-error"></p>
+    </div>
+    <div class="field">
+      <label for="confirm-password">Confirm password</label>
+      <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required>
+      <p class="field-error" id="confirm-password-error"></p>
+    </div>
+    <button type="button" class="btn" onclick="handleSignup()">Sign up</button>
+  </form>
+  <p class="login-footer">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+</div>
+
+<script>
+  function handleSignup() {
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+    const confirmError = document.getElementById('confirm-password-error');
+
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    confirmError.textContent = '';
+
+    let isValid = true;
+
+    // Email must contain an @ symbol with characters on each side
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      emailError.textContent = 'Enter a valid email address.';
+      isValid = false;
+    }
+
+    // Password: at least 8 characters, one letter, one number
+    const hasMinLength = password.length >= 8;
+    const hasLetter = /[A-Za-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    if (!hasMinLength || !hasLetter || !hasNumber) {
+      passwordError.textContent = 'Password must be at least 8 characters and include a letter and a number.';
+      isValid = false;
+    }
+
+    // Confirm password must match
+    if (password !== confirmPassword) {
+      confirmError.textContent = 'Passwords do not match.';
+      isValid = false;
+    }
+
+    if (isValid) {
+      document.getElementById('signup-form').submit();
+    }
+  }
+</script>
+{% endblock %}
