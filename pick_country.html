@@ -79,6 +79,18 @@
     border-radius: 8px;
   }
 
+  .flags {
+    display: flex;
+    gap: 40px; /* space between images */
+    align-items: center;
+    }
+
+  .flags a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+  }
+
   h1 {
     font-size: 36px;
   }
@@ -106,42 +118,37 @@
 
 <!-- Main Content -->
 <div class="content">
-  <h1 style = "text-align: center;"> Art </h1>
+    <h1 style = "text-align: center;"> Countries</h1>
 
-  <div class="section">
-    <h2>Rug Tufting</h2>
-    <p>Grew in popularity on social media with the increase of small artists creating their own small rugs. 
-        Causing an increase in rug tufting workshops which allow you to create your own rug to take home.</p>
-    <a href="https://en.wikipedia.org/wiki/Tufting" target="_blank" rel="nofollow">
-        Click here for more information
-    </a>
-  </div>
+    <div class="section flags">
+        <h2>Pick a new country to look at</h2>
+        <a href = "pick_country.html"
+        target = "_blank" rel = "external nofollow">
+            <img src="Australia_flag.png" alt="Australia"
 
-  <div class="section">
-    <h2>Videos</h2>
-    <p>A short video outlining the process of rug tufting</p>
-    <iframe 
-        width="800" 
-        height="450"
-        src="https://www.youtube.com/embed/awOTAfEIc7A"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-  </iframe>
-  </div>
+            width = "70" height="48" /><br />
+            Australia
+        </a>
 
-  <div class="section">
-    <h2>Communities</h2>
-    <p>Join groups, forums, and local craft circles.</p>
-    <a href = "https://www.facebook.com/groups/2711093252535073/"
-    target = "_blank" rel = "external nofollow">
-    <img src="facebook_logo.png" alt="facebook-icon-logo"
-        width = "48" height="48" /><br />
-        Facebook groups
-    </a>
-  </div>
+        <a href = "pick_country.html"
+        target = "_blank" rel = "external nofollow">
+            <img src="China_flag.png" alt="China"
+
+            width = "70" height="48" /><br />
+            China
+        </a>
+
+        <a href = "pick_country.html"
+        target = "_blank" rel = "external nofollow">
+            <img src="India_flag.png" alt="India"
+
+            width = "70" height="48" /><br />
+            India
+        </a> 
+    </div>
+
 </div>
 
 </body>
 </html>
+  
