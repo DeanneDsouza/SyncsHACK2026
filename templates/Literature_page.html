@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Literature | Before We Forget{% endblock %}
+
+{% block content %}
+
+<div class="topbar">
+  <button onclick="window.location.href='{{ url_for('homepage') }}'">Home</button>
+  <span class="top-title">Before We Forget</span>
+</div>
+
+<div class="sidebar">
+  <a href="{{ url_for('crafts') }}">Art &amp; Crafts</a>
+  <a href="{{ url_for('literature') }}" {% if request.path == url_for('literature') %}aria-current="page"{% endif %}>Literature</a>
+  <a href="{{ url_for('music') }}">Music</a>
+  <a href="{{ url_for('pickCountry') }}">Change Country</a>
+  <a href="{{ url_for('logout') }}">Log out</a>
+</div>
+
+<div class="dashboard-content">
+  <div class="container">
+
+    {% set category_label = "Literature" %}
+    {% include "_wiki_article.html" %}
+
+  </div>
+</div>
+
+{% endblock %}

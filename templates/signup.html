@@ -31,6 +31,34 @@
       <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required>
       <p class="field-error" id="confirm-password-error"></p>
     </div>
+
+    <div class="field">
+      <label for="country">Country</label>
+      <select id="country" name="country" required>
+        <option value="" disabled selected>Select your country</option>
+        <option value="China">China</option>
+        <option value="India">India</option>
+        <option value="Australia">Australia</option>
+      </select>
+      <p class="field-error" id="country-error"></p>
+    </div>
+
+    <div class="field">
+      <label>Hobby</label>
+      <div class="radio-group">
+        <label class="radio-option">
+          <input type="radio" name="hobbies" value="Music" required> Music
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="hobbies" value="Art & Crafts"> Art/Crafts
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="hobbies" value="Literature"> Literature
+        </label>
+      </div>
+      <p class="field-error" id="hobbies-error"></p>
+    </div>
+
     <button type="button" class="btn" onclick="handleSignup()">Sign up</button>
   </form>
   <p class="login-footer">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
@@ -41,14 +69,20 @@
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
+    const country = document.getElementById('country').value;
+    const selectedHobby = document.querySelector('input[name="hobbies"]:checked');
 
     const emailError = document.getElementById('email-error');
     const passwordError = document.getElementById('password-error');
     const confirmError = document.getElementById('confirm-password-error');
+    const countryError = document.getElementById('country-error');
+    const hobbiesError = document.getElementById('hobbies-error');
 
     emailError.textContent = '';
     passwordError.textContent = '';
     confirmError.textContent = '';
+    countryError.textContent = '';
+    hobbiesError.textContent = '';
 
     let isValid = true;
 
@@ -71,6 +105,18 @@
     // Confirm password must match
     if (password !== confirmPassword) {
       confirmError.textContent = 'Passwords do not match.';
+      isValid = false;
+    }
+
+    // Country must be selected
+    if (!country) {
+      countryError.textContent = 'Please select your country.';
+      isValid = false;
+    }
+
+    // Hobby: exactly one must be selected
+    if (!selectedHobby) {
+      hobbiesError.textContent = 'Please select a hobby.';
       isValid = false;
     }
 
