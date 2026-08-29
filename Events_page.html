@@ -2,141 +2,553 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Art Form of the Day</title>
+<title>Events | Before We Forget</title>
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+  * {
+    box-sizing: border-box;
   }
 
-  /* Top Bar */
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f0e6;
+    color: #263442;
+  }
+
+  /* TOP BAR */
   .topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: #333;
-    color: white;
+    height: 74px;
+
+    background: #081826;
+    color: #f5f0e6;
+
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
     z-index: 1000;
   }
 
-  .topbar button {
-    background: #555;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+  .home-button {
+    background: transparent;
+    color: #f5f0e6;
+
+    border: 1px solid rgba(217, 173, 88, 0.65);
+    border-radius: 999px;
+
+    padding: 9px 20px;
+
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
+    transition: 0.25s;
+  }
+
+  .home-button:hover {
+    background: #d9ad58;
+    color: #081826;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 24px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid #f5f0e6;
+    border-radius: 4px;
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    right: -4px;
+    top: 3px;
+
+    background: #d9ad58;
+
+    box-shadow:
+      -10px 12px 0 #d9ad58,
+      4px 14px 0 #d9ad58;
   }
 
   .top-title {
-    margin-left: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
   }
 
-
-  /* Sidebar */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
-    top: 60px; /* below top bar */
+    top: 74px;
     left: 0;
-    width: 200px;
-    height: calc(100vh - 60px);
-    background: #222;
-    color: white;
-    padding: 20px;
+
+    width: 230px;
+    height: calc(100vh - 74px);
+
+    background: #06111c;
+    color: #f5f0e6;
+
+    padding: 36px 25px;
+  }
+
+  .sidebar h3 {
+    color: #d9ad58;
+
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    margin: 0 0 28px;
   }
 
   .sidebar a {
     display: block;
-    color: white;
+
     text-decoration: none;
-    margin: 15px 0;
-    font-size: 18px;
+    color: #dde3e7;
+
+    padding: 13px 14px;
+    margin: 8px 0;
+
+    border-radius: 10px;
+    font-size: 17px;
+
+    transition: 0.25s;
   }
 
   .sidebar a:hover {
-    color: #ddd;
+    background: rgba(217, 173, 88, 0.14);
+    color: #d9ad58;
+    transform: translateX(5px);
   }
 
-  /* Main Content */
+  /* MAIN */
   .content {
-    margin-left: 220px;
-    margin-top: 80px;
-    padding: 20px;
+    margin-left: 230px;
+    padding: 120px 55px 70px;
+    max-width: 1400px;
   }
 
-  .section {
-    background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+  /* HERO */
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .hero-tag {
+    color: #b5863d;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
   }
 
   h1 {
-    font-size: 36px;
+    font-family: Georgia, serif;
+    color: #0b2234;
+    font-size: 50px;
+
+    margin: 14px 0 10px;
+  }
+
+  .hero-line {
+    width: 65px;
+    height: 3px;
+
+    margin: 18px auto;
+
+    background: #d9ad58;
+    border-radius: 99px;
+  }
+
+  .hero p {
+    max-width: 680px;
+    margin: 0 auto;
+
+    color: #596773;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* EVENT FEATURE */
+  .event-card {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+
+    background: #fffdf7;
+
+    border: 1px solid #e5d7b9;
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 12px 35px rgba(8, 24, 38, 0.09);
+
+    margin-bottom: 30px;
+  }
+
+  .event-date {
+    background: #081826;
+    color: #f5f0e6;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px 20px;
+
+    text-align: center;
+  }
+
+  .event-date .small {
+    color: #d9ad58;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .event-date .big {
+    margin-top: 10px;
+
+    font-family: Georgia, serif;
+    font-size: 42px;
+    line-height: 1;
+  }
+
+  .event-info {
+    padding: 38px;
+  }
+
+  .memory-tag {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: rgba(217, 173, 88, 0.13);
+
+    color: #9b6c25;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
   }
 
   h2 {
-    font-size: 28px;
+    margin: 0 0 15px;
+
+    font-family: Georgia, serif;
+    font-size: 34px;
+
+    color: #102a3a;
+  }
+
+  .event-info p,
+  .section p {
+    color: #53616d;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .main-link {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 11px 19px;
+
+    background: #d9ad58;
+    color: #081826;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+    transition: 0.25s;
+  }
+
+  .main-link:hover {
+    background: #e6bf72;
+    transform: translateY(-2px);
+  }
+
+  /* OTHER SECTIONS */
+  .section {
+    background: #fffdf7;
+
+    padding: 34px;
+
+    margin: 28px 0;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5d7b9;
+
+    box-shadow: 0 10px 30px rgba(8, 24, 38, 0.08);
+  }
+
+  video {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+
+    margin-top: 15px;
+
+    background: #06111c;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(217, 173, 88, 0.35);
+  }
+
+  /* COMMUNITY */
+  .community-row {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+    margin-top: 18px;
+  }
+
+  .community-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #081826;
+    color: #d9ad58;
+
+    border-radius: 13px;
+
+    font-size: 24px;
+  }
+
+  .community-link {
+    color: #a87b34;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .community-link:hover {
+    color: #d9ad58;
+  }
+
+  @media (max-width: 850px) {
+    .event-card {
+      grid-template-columns: 1fr;
+    }
+
+    .event-date {
+      min-height: 150px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .sidebar {
+      width: 170px;
+    }
+
+    .content {
+      margin-left: 170px;
+      padding: 110px 24px 40px;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
   }
 </style>
+
 </head>
+
 <body>
 
-<!-- Top Bar -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <button onclick="window.location.href='home_page.html'">Home</button>
-  <span class="top-title">Before We Forget</span>
+
+  <button
+    class="home-button"
+    onclick="window.location.href='home_page.html'"
+  >
+    Home
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark"></div>
+
+    <span class="top-title">
+      Before We Forget
+    </span>
+  </div>
+
 </div>
 
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <div class="sidebar">
+
   <h3>Explore</h3>
+
   <a href="Craft_page.html">Art</a>
   <a href="Literature_page.html">Literature</a>
   <a href="Events_page.html">Events</a>
+
 </div>
 
-<!-- Main Content -->
+<!-- MAIN -->
 <div class="content">
-  <h1 style = "text-align: center;"> Events</h1>
 
-  <div class="section">
-    <h2>Artisan Fairs</h2>
-    <p>Artisans are skilled workers who make practical or decorative objects by hand. Often many artisans go to
-        fairs to sell their products and makes a good day out. The Lost Trades Fair at Hanging Rock showcases the work of many artisans 
-        who participate in trades which are dying out. </p>
-    <a href="https://en.wikipedia.org/wiki/Artisan" target="_blank" rel="nofollow">
-        Click here for more information
-    </a>
+  <div class="hero">
+
+    <div class="hero-tag">
+      Traditions Still Alive
+    </div>
+
+    <h1>Events</h1>
+
+    <div class="hero-line"></div>
+
+    <p>
+      Discover fairs, gatherings and cultural events where traditional
+      knowledge survives through practice, community and shared experience.
+    </p>
+
   </div>
 
+  <!-- MAIN EVENT -->
+  <div class="event-card">
+
+    <div class="event-date">
+
+      <div class="small">
+        Featured Event
+      </div>
+
+      <div class="big">
+        Lost<br>Trades
+      </div>
+
+    </div>
+
+    <div class="event-info">
+
+      <div class="memory-tag">
+        Living Tradition
+      </div>
+
+      <h2>Lost Trades Fair</h2>
+
+      <p>
+        Artisan fairs bring skilled makers together to demonstrate,
+        preserve and share traditional crafts. The Lost Trades Fair
+        showcases trades and techniques that are becoming increasingly rare,
+        giving visitors a chance to see living knowledge in action.
+      </p>
+
+      <a
+        class="main-link"
+        href="https://en.wikipedia.org/wiki/Artisan"
+        target="_blank"
+        rel="nofollow"
+      >
+        Learn More
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- VIDEO -->
   <div class="section">
-    <h2>Videos</h2>
-    <p>A video advertising the Lost Trades Fair</p>
-    <video width = "800" height = "450" controls>
-        <source src="https://video.wixstatic.com/video/25060b_00a97324ed1d4a2ca800e3236c6f35e6/1080p/mp4/file.mp4" type="video/mp4">
-        <source src="vid.ogg" type="video/ogg">
+
+    <div class="memory-tag">
+      See It in Motion
+    </div>
+
+    <h2>Inside the Fair</h2>
+
+    <p>
+      Watch a glimpse of the Lost Trades Fair and the craftspeople
+      keeping disappearing skills alive.
+    </p>
+
+    <video controls>
+
+      <source
+        src="https://video.wixstatic.com/video/25060b_00a97324ed1d4a2ca800e3236c6f35e6/1080p/mp4/file.mp4"
+        type="video/mp4"
+      >
+
+      Your browser does not support the video tag.
+
     </video>
-   </div>
 
-  <div class="section">
-    <h2>Communities</h2>
-    <p>Join groups, forums, and local craft circles.</p>
-    <a href = "https://www.facebook.com/sydneyartisans/"
-    target = "_blank" rel = "external nofollow">
-    <img src="facebook_logo.png" alt="facebook-icon-logo"
-     width = "48" height="48" /><br />
-        Facebook groups
-    </a>
   </div>
+
+  <!-- COMMUNITY -->
+  <div class="section">
+
+    <div class="memory-tag">
+      Find Your Community
+    </div>
+
+    <h2>Artisan Communities</h2>
+
+    <p>
+      Connect with makers and local craft communities who continue
+      passing traditional techniques from one generation to the next.
+    </p>
+
+    <div class="community-row">
+
+      <div class="community-icon">
+        ✦
+      </div>
+
+      <a
+        class="community-link"
+        href="https://www.facebook.com/sydneyartisans/"
+        target="_blank"
+        rel="external nofollow"
+      >
+        Visit Sydney Artisans
+      </a>
+
+    </div>
+
+  </div>
+
 </div>
 
 </body>

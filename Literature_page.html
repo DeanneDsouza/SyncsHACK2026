@@ -2,139 +2,567 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Art Form of the Day</title>
+<title>Literature | Before We Forget</title>
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+  * {
+    box-sizing: border-box;
   }
 
-  /* Top Bar */
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f0e6;
+    color: #263442;
+  }
+
+  /* TOP BAR */
   .topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: #333;
-    color: white;
+    height: 74px;
+
+    background: #081826;
+    color: #f5f0e6;
+
     display: flex;
     align-items: center;
-    padding: 0 20px;
+
+    padding: 0 30px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
     z-index: 1000;
   }
 
-  .topbar button {
-    background: #555;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+  .home-button {
+    background: transparent;
+    color: #f5f0e6;
+
+    border: 1px solid rgba(217, 173, 88, 0.65);
+    border-radius: 999px;
+
+    padding: 9px 20px;
     cursor: pointer;
-    font-size: 16px;
+
+    font-size: 15px;
+    transition: 0.25s;
+  }
+
+  .home-button:hover {
+    background: #d9ad58;
+    color: #081826;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 24px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid #f5f0e6;
+    border-radius: 4px;
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-mark::after {
+    content: "";
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    right: -4px;
+    top: 3px;
+
+    background: #d9ad58;
+
+    box-shadow:
+      -10px 12px 0 #d9ad58,
+      4px 14px 0 #d9ad58;
   }
 
   .top-title {
-    margin-left: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
   }
 
-
-  /* Sidebar */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
-    top: 60px; /* below top bar */
+
+    top: 74px;
     left: 0;
-    width: 200px;
-    height: calc(100vh - 60px);
-    background: #222;
-    color: white;
-    padding: 20px;
+
+    width: 230px;
+    height: calc(100vh - 74px);
+
+    background: #06111c;
+    color: #f5f0e6;
+
+    padding: 36px 25px;
+  }
+
+  .sidebar h3 {
+    color: #d9ad58;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    margin: 0 0 28px;
   }
 
   .sidebar a {
     display: block;
-    color: white;
+
     text-decoration: none;
-    margin: 15px 0;
-    font-size: 18px;
+    color: #dde3e7;
+
+    padding: 13px 14px;
+    margin: 8px 0;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    transition: 0.25s;
   }
 
   .sidebar a:hover {
-    color: #ddd;
+    background: rgba(217, 173, 88, 0.14);
+    color: #d9ad58;
+    transform: translateX(5px);
   }
 
-  /* Main Content */
+  /* MAIN */
   .content {
-    margin-left: 220px;
-    margin-top: 80px;
-    padding: 20px;
+    margin-left: 230px;
+    padding: 120px 55px 70px;
+    max-width: 1400px;
   }
 
-  .section {
-    background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+  /* HERO */
+  .hero {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .hero-tag {
+    color: #b5863d;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
   }
 
   h1 {
-    font-size: 36px;
+    margin: 14px 0 10px;
+
+    font-family: Georgia, serif;
+
+    font-size: 50px;
+
+    color: #0b2234;
+  }
+
+  .hero-line {
+    width: 65px;
+    height: 3px;
+
+    margin: 18px auto;
+
+    background: #d9ad58;
+    border-radius: 99px;
+  }
+
+  .hero p {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    color: #596773;
+
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* FEATURED LITERATURE */
+  .literature-card {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+
+    overflow: hidden;
+
+    background: #fffdf7;
+
+    border: 1px solid #e5d7b9;
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(8, 24, 38, 0.09);
+
+    margin-bottom: 30px;
+  }
+
+  .literature-visual {
+    min-height: 370px;
+
+    background:
+      linear-gradient(
+        rgba(8, 24, 38, 0.30),
+        rgba(8, 24, 38, 0.50)
+      ),
+      linear-gradient(
+        135deg,
+        #8f7351,
+        #d7c099,
+        #594332
+      );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+  }
+
+  .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 140px;
+    line-height: 1;
+
+    color: rgba(255, 248, 230, 0.82);
+  }
+
+  .literature-info {
+    padding: 42px;
+  }
+
+  .memory-tag {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: rgba(217, 173, 88, 0.13);
+
+    color: #9b6c25;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
   }
 
   h2 {
-    font-size: 28px;
+    margin: 0 0 15px;
+
+    font-family: Georgia, serif;
+
+    font-size: 34px;
+
+    color: #102a3a;
+  }
+
+  .literature-info p {
+    color: #53616d;
+
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .main-link {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 11px 19px;
+
+    background: #d9ad58;
+    color: #081826;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+  }
+
+  .main-link:hover {
+    background: #e7bf70;
+    transform: translateY(-2px);
+  }
+
+  /* VIDEO */
+  .section {
+    background: #fffdf7;
+
+    padding: 34px;
+
+    margin: 28px 0;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5d7b9;
+
+    box-shadow: 0 10px 30px rgba(8, 24, 38, 0.08);
+  }
+
+  .section p {
+    color: #53616d;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  video {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+
+    margin-top: 15px;
+
+    border-radius: 14px;
+
+    background: #06111c;
+
+    border: 1px solid rgba(217, 173, 88, 0.35);
+  }
+
+  /* COMMUNITY */
+  .community-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    margin-top: 18px;
+  }
+
+  .community-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #081826;
+    color: #d9ad58;
+
+    border-radius: 13px;
+
+    font-family: Georgia, serif;
+    font-size: 24px;
+  }
+
+  .community-link {
+    color: #a87b34;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .community-link:hover {
+    color: #d9ad58;
+  }
+
+  @media (max-width: 950px) {
+    .literature-card {
+      grid-template-columns: 1fr;
+    }
+
+    .literature-visual {
+      min-height: 220px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .sidebar {
+      width: 170px;
+    }
+
+    .content {
+      margin-left: 170px;
+      padding: 110px 24px 40px;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
   }
 </style>
 </head>
+
 <body>
 
-<!-- Top Bar -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <button onclick="window.location.href='home_page.html'">Home</button>
-  <span class="top-title">Before We Forget</span>
+
+  <button
+    class="home-button"
+    onclick="window.location.href='home_page.html'"
+  >
+    Home
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark"></div>
+
+    <span class="top-title">
+      Before We Forget
+    </span>
+  </div>
+
 </div>
 
-<!-- Sidebar -->
+
+<!-- SIDEBAR -->
 <div class="sidebar">
+
   <h3>Explore</h3>
+
   <a href="Craft_page.html">Art</a>
   <a href="Literature_page.html">Literature</a>
   <a href="Events_page.html">Events</a>
+
 </div>
 
-<!-- Main Content -->
+
+<!-- MAIN -->
 <div class="content">
-  <h1 style = "text-align: center;"> Literature</h1>
 
-  <div class="section">
-    <h2>Shakespeare</h2>
-    <p>Most people find this name traumatic due to highschool english, but many people consider him to be the best play writter to have ever existed. </p>
-    <a href="https://en.wikipedia.org/wiki/William_Shakespeare" target="_blank" rel="nofollow">
-        Click here for more information
-    </a>
+  <div class="hero">
+
+    <div class="hero-tag">
+      Words That Outlived Their Time
+    </div>
+
+    <h1>Literature</h1>
+
+    <div class="hero-line"></div>
+
+    <p>
+      Explore writing that survived generations and continues
+      shaping how we understand culture, memory and ourselves.
+    </p>
+
   </div>
 
+
+  <!-- FEATURE -->
+  <div class="literature-card">
+
+    <div class="literature-visual">
+      <div class="quote-mark">“</div>
+    </div>
+
+    <div class="literature-info">
+
+      <div class="memory-tag">
+        Literary Legacy
+      </div>
+
+      <h2>William Shakespeare</h2>
+
+      <p>
+        Shakespeare remains one of the most influential playwrights
+        in literary history. His plays and poetry have survived
+        centuries, continually reinterpreted across languages,
+        cultures and generations.
+      </p>
+
+      <a
+        class="main-link"
+        href="https://en.wikipedia.org/wiki/William_Shakespeare"
+        target="_blank"
+        rel="nofollow"
+      >
+        Explore His Legacy
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- VIDEO -->
   <div class="section">
-    <h2>Videos</h2>
-    <p>A video to remind you of highschool trauma</p>
-    <video width = "800" height = "450" controls>
-        <source src="https://media.podcasts.ox.ac.uk/engfac/great-writers/shakespeare/twogents_language_may2012-web.mp4" type="video/mp4">
-        <source src="vid.ogg" type="video/ogg">
+
+    <div class="memory-tag">
+      Hear the Words
+    </div>
+
+    <h2>Shakespeare in Language</h2>
+
+    <p>
+      Explore how Shakespeare's language continues to influence
+      literature, theatre and modern storytelling.
+    </p>
+
+    <video controls>
+
+      <source
+        src="https://media.podcasts.ox.ac.uk/engfac/great-writers/shakespeare/twogents_language_may2012-web.mp4"
+        type="video/mp4"
+      >
+
+      Your browser does not support the video tag.
+
     </video>
+
   </div>
 
+
+  <!-- COMMUNITY -->
   <div class="section">
+
+    <div class="memory-tag">
+      Continue the Conversation
+    </div>
+
     <h2>Communities</h2>
-    <p>Join groups, forums, and local craft circles.</p>
-    <a href = "https://www.facebook.com/groups/467359555391854/"
-    target = "_blank" rel = "external nofollow">
-        <img src="facebook_logo.png" alt="facebook-icon-logo"
-            width = "48" height="48" /><br />
-        Facebook groups
-    </a>
+
+    <p>
+      Connect with readers, theatre enthusiasts and literature
+      communities keeping these works alive.
+    </p>
+
+    <div class="community-row">
+
+      <div class="community-icon">
+        Aa
+      </div>
+
+      <a
+        class="community-link"
+        href="https://www.facebook.com/groups/467359555391854/"
+        target="_blank"
+        rel="external nofollow"
+      >
+        Visit Shakespeare Community
+      </a>
+
+    </div>
+
   </div>
+
 </div>
 
 </body>

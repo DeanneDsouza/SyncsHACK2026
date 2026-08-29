@@ -2,153 +2,409 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Art Form of the Day</title>
+<title>Choose a Country | Before We Forget</title>
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+  * {
+    box-sizing: border-box;
   }
 
-  /* Top Bar */
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f0e6;
+    color: #263442;
+  }
+
+  /* TOP BAR */
   .topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: #333;
-    color: white;
+    height: 74px;
+
+    background: #081826;
+    color: #f5f0e6;
+
     display: flex;
     align-items: center;
-    padding: 0 20px;
+
+    padding: 0 30px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
     z-index: 1000;
   }
 
-  .topbar button {
-    background: #555;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+  .home-button {
+    background: transparent;
+    color: #f5f0e6;
+
+    border: 1px solid rgba(217, 173, 88, 0.65);
+    border-radius: 999px;
+
+    padding: 9px 20px;
+
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
+
+    transition: 0.25s;
+  }
+
+  .home-button:hover {
+    background: #d9ad58;
+    color: #081826;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-left: 24px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid #f5f0e6;
+    border-radius: 4px;
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    right: -4px;
+    top: 3px;
+
+    background: #d9ad58;
+
+    box-shadow:
+      -10px 12px 0 #d9ad58,
+      4px 14px 0 #d9ad58;
   }
 
   .top-title {
-    margin-left: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
   }
 
-
-  /* Sidebar */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
-    top: 60px; /* below top bar */
+    top: 74px;
     left: 0;
-    width: 200px;
-    height: calc(100vh - 60px);
-    background: #222;
-    color: white;
-    padding: 20px;
+
+    width: 230px;
+    height: calc(100vh - 74px);
+
+    background: #06111c;
+    color: #f5f0e6;
+
+    padding: 36px 25px;
+  }
+
+  .sidebar h3 {
+    color: #d9ad58;
+
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    margin: 0 0 28px;
   }
 
   .sidebar a {
     display: block;
-    color: white;
+
     text-decoration: none;
-    margin: 15px 0;
-    font-size: 18px;
+    color: #dde3e7;
+
+    padding: 13px 14px;
+    margin: 8px 0;
+
+    border-radius: 10px;
+    font-size: 17px;
+
+    transition: 0.25s;
   }
 
   .sidebar a:hover {
-    color: #ddd;
+    background: rgba(217, 173, 88, 0.14);
+    color: #d9ad58;
+    transform: translateX(5px);
   }
 
-  /* Main Content */
+  /* MAIN */
   .content {
-    margin-left: 220px;
-    margin-top: 80px;
-    padding: 20px;
+    margin-left: 230px;
+    padding: 125px 55px 65px;
   }
 
-  .section {
-    background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-  }
-
-  .flags {
-    display: flex;
-    gap: 40px; /* space between images */
-    align-items: center;
-    }
-
-  .flags a {
+  .hero {
     text-align: center;
-    text-decoration: none;
-    color: black;
+    margin-bottom: 48px;
+  }
+
+  .hero-tag {
+    color: #b5863d;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
   }
 
   h1 {
-    font-size: 36px;
+    font-family: Georgia, serif;
+    color: #0b2234;
+    font-size: 50px;
+    margin: 14px 0 12px;
   }
 
-  h2 {
+  .hero-line {
+    width: 65px;
+    height: 3px;
+    margin: 18px auto;
+    background: #d9ad58;
+    border-radius: 99px;
+  }
+
+  .hero p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #596773;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* COUNTRY GRID */
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .country-card {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 320px;
+
+    border-radius: 20px;
+    text-decoration: none;
+
+    background: #081826;
+
+    box-shadow: 0 12px 32px rgba(8, 24, 38, 0.14);
+
+    transition: 0.3s;
+  }
+
+  .country-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 45px rgba(8, 24, 38, 0.22);
+  }
+
+  .country-image {
+    width: 100%;
+    height: 190px;
+
+    object-fit: cover;
+    display: block;
+
+    opacity: 0.9;
+    transition: 0.35s;
+  }
+
+  .country-card:hover .country-image {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+
+  .country-info {
+    padding: 22px;
+  }
+
+  .country-info h2 {
+    margin: 0 0 8px;
+
+    font-family: Georgia, serif;
+    color: #fffaf0;
     font-size: 28px;
+  }
+
+  .country-info p {
+    margin: 0;
+    color: #b8c4cc;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .country-arrow {
+    display: inline-block;
+    margin-top: 15px;
+
+    color: #d9ad58;
+    font-weight: 700;
+  }
+
+  @media (max-width: 950px) {
+    .country-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .sidebar {
+      width: 170px;
+    }
+
+    .content {
+      margin-left: 170px;
+      padding: 110px 24px 40px;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
   }
 </style>
 </head>
+
 <body>
 
-<!-- Top Bar -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <button onclick="window.location.href='home_page.html'">Home</button>
-  <span class="top-title">Before We Forget</span>
+
+  <button
+    class="home-button"
+    onclick="window.location.href='home_page.html'"
+  >
+    Home
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark"></div>
+
+    <span class="top-title">
+      Before We Forget
+    </span>
+  </div>
+
 </div>
 
-<!-- Sidebar -->
+<!-- SIDEBAR -->
 <div class="sidebar">
+
   <h3>Explore</h3>
+
   <a href="Craft_page.html">Art</a>
   <a href="Literature_page.html">Literature</a>
   <a href="Events_page.html">Events</a>
+
 </div>
 
-<!-- Main Content -->
+<!-- MAIN -->
 <div class="content">
-    <h1 style = "text-align: center;"> Countries</h1>
 
-    <div class="section flags">
-        <h2>Pick a new country to look at</h2>
-        <a href = "pick_country.html"
-        target = "_blank" rel = "external nofollow">
-            <img src="Australia_flag.png" alt="Australia"
+  <div class="hero">
 
-            width = "70" height="48" /><br />
-            Australia
-        </a>
-
-        <a href = "pick_country.html"
-        target = "_blank" rel = "external nofollow">
-            <img src="China_flag.png" alt="China"
-
-            width = "70" height="48" /><br />
-            China
-        </a>
-
-        <a href = "pick_country.html"
-        target = "_blank" rel = "external nofollow">
-            <img src="India_flag.png" alt="India"
-
-            width = "70" height="48" /><br />
-            India
-        </a> 
+    <div class="hero-tag">
+      Explore Across Cultures
     </div>
+
+    <h1>Choose a Country</h1>
+
+    <div class="hero-line"></div>
+
+    <p>
+      Discover traditions, forgotten knowledge and cultural memories
+      preserved across different parts of the world.
+    </p>
+
+  </div>
+
+  <div class="country-grid">
+
+    <!-- AUSTRALIA -->
+    <a class="country-card" href="Craft_page.html">
+      <img
+        class="country-image"
+        src="Australia.jpg"
+        alt="Australia"
+      >
+
+      <div class="country-info">
+        <h2>Australia</h2>
+
+        <p>
+          Explore stories, traditions and knowledge shaped by
+          one of the world's oldest continuous cultures.
+        </p>
+
+        <span class="country-arrow">
+          Explore Australia →
+        </span>
+      </div>
+    </a>
+
+
+    <!-- CHINA -->
+    <a class="country-card" href="Craft_page.html">
+      <img
+        class="country-image"
+        src="China.jpg"
+        alt="China"
+      >
+
+      <div class="country-info">
+        <h2>China</h2>
+
+        <p>
+          Rediscover crafts, literature and historical knowledge
+          carried across thousands of years.
+        </p>
+
+        <span class="country-arrow">
+          Explore China →
+        </span>
+      </div>
+    </a>
+
+
+    <!-- INDIA -->
+    <a class="country-card" href="Craft_page.html">
+      <img
+        class="country-image"
+        src="India.jpg"
+        alt="India"
+      >
+
+      <div class="country-info">
+        <h2>India</h2>
+
+        <p>
+          Explore ancient traditions, cultural memory and knowledge
+          preserved through generations.
+        </p>
+
+        <span class="country-arrow">
+          Explore India →
+        </span>
+      </div>
+    </a>
+
+  </div>
 
 </div>
 
 </body>
 </html>
-  

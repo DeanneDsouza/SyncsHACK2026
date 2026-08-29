@@ -2,153 +2,655 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Art Form of the Day</title>
+<title>Before We Forget</title>
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+  * {
+    box-sizing: border-box;
   }
 
-  /* Top Bar */
+  body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  background:
+    linear-gradient(
+      rgba(245, 240, 230, 0.94),
+      rgba(245, 240, 230, 0.97)
+    ),
+    url("hero-art.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: #263442;
+}
+
+  /* TOP BAR */
   .topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
-    background: #333;
-    color: white;
+
+    height: 74px;
+
+    background: #081826;
+    color: #f5f0e6;
+
     display: flex;
     align-items: center;
-    padding: 0 20px;
+
+    padding: 0 30px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+
     z-index: 1000;
   }
 
-  .topbar button {
-    background: #555;
-    color: white;
-    border: none;
-    padding: 10px 15px;
+  .home-button {
+    background: transparent;
+    color: #f5f0e6;
+
+    border: 1px solid rgba(217, 173, 88, 0.65);
+    border-radius: 999px;
+
+    padding: 9px 20px;
+
     cursor: pointer;
-    font-size: 16px;
+
+    font-size: 15px;
+
+    transition: 0.25s;
+  }
+
+  .home-button:hover {
+    background: #d9ad58;
+    color: #081826;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-left: 24px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+
+    border: 2px solid #f5f0e6;
+    border-radius: 4px;
+
+    position: relative;
+
+    overflow: hidden;
+  }
+
+  .brand-mark::after {
+    content: "";
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    right: -4px;
+    top: 3px;
+
+    background: #d9ad58;
+
+    box-shadow:
+      -10px 12px 0 #d9ad58,
+      4px 14px 0 #d9ad58;
   }
 
   .top-title {
-    margin-left: 20px;
-    font-size: 22px;
-    font-weight: bold;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: 600;
+
+    letter-spacing: 0.4px;
   }
 
-
-  /* Sidebar */
+  /* SIDEBAR */
   .sidebar {
     position: fixed;
-    top: 60px; /* below top bar */
+
+    top: 74px;
     left: 0;
-    width: 200px;
-    height: calc(100vh - 60px);
-    background: #222;
-    color: white;
-    padding: 20px;
+
+    width: 230px;
+    height: calc(100vh - 74px);
+
+    background: #06111c;
+    color: #f5f0e6;
+
+    padding: 36px 25px;
+  }
+
+  .sidebar h3 {
+    color: #d9ad58;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    margin: 0 0 28px;
   }
 
   .sidebar a {
     display: block;
-    color: white;
+
     text-decoration: none;
-    margin: 15px 0;
-    font-size: 18px;
+
+    color: #dde3e7;
+
+    padding: 13px 14px;
+    margin: 8px 0;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+    transition: 0.25s;
   }
 
   .sidebar a:hover {
-    color: #ddd;
+    background: rgba(217, 173, 88, 0.14);
+
+    color: #d9ad58;
+
+    transform: translateX(5px);
   }
 
-  /* Main Content */
+  /* MAIN */
   .content {
-    margin-left: 220px;
-    margin-top: 80px;
-    padding: 20px;
+    margin-left: 230px;
+
+    padding: 120px 55px 65px;
+
+    max-width: 1400px;
   }
 
-  .section {
-    background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
+  /* HERO */
+ .hero {
+  min-height: 380px;
+
+  background:
+    linear-gradient(
+      rgba(6, 17, 28, 0.62),
+      rgba(6, 17, 28, 0.55)
+    ),
+    url("hero-art.jpg");
+
+  background-size: cover;
+  background-position: center 42%;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+
+  .hero-tag {
+    color: #b5863d;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
   }
 
   h1 {
-    font-size: 36px;
+    font-family: Georgia, serif;
+
+    color: #0b2234;
+
+    font-size: 50px;
+
+    margin: 14px 0 12px;
+  }
+
+  .hero h1 {
+  color: #fffaf0;
+  font-size: 58px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.hero p {
+  color: #f5f0e6;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.hero-tag {
+  color: #e2b75f;
+}
+
+  .hero-line {
+    width: 65px;
+    height: 3px;
+
+    margin: 18px auto;
+
+    background: #d9ad58;
+
+    border-radius: 99px;
+  }
+
+  .hero {
+  position: relative;
+  min-height: 430px;
+
+  margin: -46px -55px 55px;
+  padding: 90px 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      rgba(6, 17, 28, 0.68),
+      rgba(6, 17, 28, 0.58)
+    ),
+    url("hero-art.jpg");
+
+  background-size: cover;
+  background-position: center 42%;
+
+  color: #f5f0e6;
+}
+
+  /* CARDS */
+  .section {
+    background: #fffdf7;
+
+    padding: 34px;
+
+    margin: 28px 0;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5d7b9;
+
+    box-shadow:
+      0 10px 30px rgba(8, 24, 38, 0.08);
+
+    transition: 0.25s;
+  }
+
+  .section:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+      0 16px 40px rgba(8, 24, 38, 0.13);
   }
 
   h2 {
-    font-size: 28px;
+    margin-top: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    color: #102a3a;
+  }
+
+  .section p {
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: #53616d;
+  }
+
+  /* BUTTON */
+  .main-link {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 11px 19px;
+
+    background: #d9ad58;
+    color: #081826;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+  }
+
+  .main-link:hover {
+    background: #e6bf72;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(217, 173, 88, 0.25);
+  }
+
+  .secondary-link {
+    color: #a87b34;
+
+    font-weight: 700;
+
+    text-decoration: none;
+  }
+
+  .secondary-link:hover {
+    color: #d9ad58;
+  }
+
+  /* FEATURE TAG */
+  .memory-tag {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 6px 11px;
+
+    border-radius: 999px;
+
+    background: rgba(217, 173, 88, 0.13);
+
+    color: #9b6c25;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.6px;
+
+    font-weight: 700;
+  }
+
+  /* VIDEO */
+  video {
+    width: 100%;
+    max-width: 900px;
+
+    height: auto;
+
+    margin-top: 15px;
+
+    background: #06111c;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(217, 173, 88, 0.35);
+  }
+
+  /* COMMUNITY */
+  .icon-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 18px;
+  }
+
+  .icon-box {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: #081826;
+
+    color: #d9ad58;
+
+    font-size: 24px;
+  }
+
+  /* COUNTRY */
+  .country-card {
+    background:
+      linear-gradient(
+        135deg,
+        #fffdf7 0%,
+        #f3ead8 100%
+      );
+
+    border-left: 4px solid #d9ad58;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    .sidebar {
+      width: 170px;
+    }
+
+    .content {
+      margin-left: 170px;
+
+      padding: 110px 24px 40px;
+    }
+
+    h1 {
+      font-size: 37px;
+    }
+
+    .top-title {
+      font-size: 20px;
+    }
   }
 </style>
+
 </head>
+
 <body>
 
-<!-- Top Bar -->
+<!-- TOP BAR -->
 <div class="topbar">
-  <button onclick="window.location.href='home_page.html'">Home</button>
-  <span class="top-title">Before We Forget</span>
+
+  <button
+    class="home-button"
+    onclick="window.location.href='home_page.html'"
+  >
+    Home
+  </button>
+
+  <div class="brand">
+    <div class="brand-mark"></div>
+
+    <span class="top-title">
+      Before We Forget
+    </span>
+  </div>
+
 </div>
 
-<!-- Sidebar -->
+
+<!-- SIDEBAR -->
 <div class="sidebar">
+
   <h3>Explore</h3>
-  <a href="Craft_page.html">Art</a>
-  <a href="Literature_page.html">Literature</a>
-  <a href="Events_page.html">Events</a>
+
+  <a href="Craft_page.html">
+    Art
+  </a>
+
+  <a href="Literature_page.html">
+    Literature
+  </a>
+
+  <a href="Events_page.html">
+    Events
+  </a>
+
 </div>
 
-<!-- Main Content -->
+
+<!-- MAIN CONTENT -->
 <div class="content">
-  <h1 style = "text-align: center;"> Art Form of the Day</h1>
 
-  <div class="section">
-    <h2>Lace Making</h2>
-    <p>Lace making was an art which was done by most women as a way to be more independent in a time which did not support them.
-        There are many different styles of lace making such as bobbin lace, irish lace and needle lace. </p>
-    <a href="https://en.wikipedia.org/wiki/Bobbin_lace" target="_blank" rel="nofollow">
-        Click here for more information
-    </a>
+  <div class="hero">
+
+    <div class="hero-tag">
+      Preserving Forgotten Knowledge
+    </div>
+
+    <h1>
+      Art Form of the Day
+    </h1>
+
+    <div class="hero-line"></div>
+
+    <p>
+      Rediscover traditions, skills and stories
+      that risk disappearing with time.
+    </p>
+
   </div>
 
+
+  <!-- LACE MAKING -->
   <div class="section">
-    <h2>Videos</h2>
-    <p>Watch tutorials, demonstrations, and artisan showcases.</p>
-    <video width = "800" height = "450" controls>
-        <source src="vid.mp4" type="video/mp4">
-        <source src="vid.ogg" type="video/ogg">
+
+    <div class="memory-tag">
+      Rediscovered Craft
+    </div>
+
+    <h2>
+      Lace Making
+    </h2>
+
+    <p>
+      Lace making was an art practised by many women
+      as a way to gain greater independence during
+      periods when opportunities for women were limited.
+      Different traditions include bobbin lace,
+      Irish lace and needle lace.
+    </p>
+
+    <a
+      class="main-link"
+      href="https://en.wikipedia.org/wiki/Bobbin_lace"
+      target="_blank"
+      rel="nofollow"
+    >
+      Explore the Story
+    </a>
+
+  </div>
+
+
+  <!-- VIDEO -->
+  <div class="section">
+
+    <div class="memory-tag">
+      See It Survive
+    </div>
+
+    <h2>
+      Watch the Craft
+    </h2>
+
+    <p>
+      Watch demonstrations and artisan showcases
+      that help keep traditional techniques alive.
+    </p>
+
+    <video controls>
+
+      <source
+        src="vid.mp4"
+        type="video/mp4"
+      >
+
+      <source
+        src="vid.ogg"
+        type="video/ogg"
+      >
+
+      Your browser does not support the video tag.
+
     </video>
+
   </div>
 
+
+  <!-- COMMUNITY -->
   <div class="section">
-    <h2>Communities</h2>
-    <p>Join groups, forums, and local craft circles.</p>
-    <a href = "https://www.facebook.com/groups/bobbinlacemakers/"
-    target = "_blank" rel = "external nofollow">
-        <img src="facebook_logo.png" alt="facebook-icon-logo"
 
-        width = "48" height="48" /><br />
-        Facebook groups
-    </a>
-  </div>
-  
-  <div class="section">
-    <h2>Country</h2>
-    <p>See art froms from another counrty</p>
-    <a href = "pick_country.html"
-    target = "_blank" rel = "external nofollow">
-        <img src="Flag.png" alt="flag"
+    <div class="memory-tag">
+      Keep It Alive
+    </div>
 
-        width = "60" height="48" /><br />
-        Press here to look at other countries
-    </a>
+    <h2>
+      Communities
+    </h2>
+
+    <p>
+      Connect with people who are still preserving
+      and practising traditional crafts today.
+    </p>
+
+    <div class="icon-row">
+
+      <div class="icon-box">
+        ✦
+      </div>
+
+      <a
+        class="secondary-link"
+        href="https://www.facebook.com/groups/bobbinlacemakers/"
+        target="_blank"
+        rel="external nofollow"
+      >
+        Visit Bobbin Lace Makers Community
+      </a>
+
+    </div>
+
   </div>
+
+
+  <!-- COUNTRY -->
+  <div class="section country-card">
+
+    <div class="memory-tag">
+      Explore the World
+    </div>
+
+    <h2>
+      Discover Another Country
+    </h2>
+
+    <p>
+      Explore forgotten art forms, cultural traditions
+      and memories from different parts of the world.
+    </p>
+
+    <a
+      class="main-link"
+      href="pick_country.html"
+    >
+      Choose a Country
+    </a>
+
+  </div>
+
 </div>
 
 </body>
