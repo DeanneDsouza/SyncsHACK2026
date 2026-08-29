@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Sign up - Profile{% endblock %}
+{% block body_class %}login-page{% endblock %}
+
+{% block content %}
+  <div class="logo">Your Logo</div>
+  <p class="tagline">Tell us about yourself</p>
+
+  <div class="login-card">
+    <form method="post">
+      <div class="field">
+        <label for="interests">Areas of interest</label>
+        <select id="interests" name="interests">
+          <option value="select">Select an option</option>
+          <option value="literature">Literature</option>
+          <option value="artisans">Artisans</option>
+          <option value="arts-crafts">Arts/Crafts</option>
+          <option value="music">Music</option>
+          <option value="ai-arts">AI Arts</option>
+        </select>
+        {% if errors.interests %}<p class="field-error">{{ errors.interests }}</p>{% endif %}
+      </div>
+
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country" name="country">
+          <option value="select">Select an option</option>
+          <option value="Australia">Australia</option>
+          <option value="China">China</option>
+          <option value="India">India</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn">Create account</button>
+    </form>
+  </div>
+{% endblock %}
