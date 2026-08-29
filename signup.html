@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sign up</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body class="login-page">
 
@@ -12,7 +15,7 @@
   <p class="login-tagline">Create your account</p>
 
   <div class="login-card">
-    <form action="signup" method="post">
+    <form id="signup-form" action="signup" method="post" novalidate>
       <div class="field">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" autocomplete="username" required>
@@ -20,19 +23,66 @@
       <div class="field">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" autocomplete="email" required>
+        <p class="field-error" id="email-error"></p>
       </div>
       <div class="field">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" autocomplete="new-password" required>
+        <p class="field-error" id="password-error"></p>
       </div>
       <div class="field">
         <label for="confirm-password">Confirm password</label>
         <input type="password" id="confirm-password" name="confirm-password" autocomplete="new-password" required>
+        <p class="field-error" id="confirm-password-error"></p>
       </div>
-      <button type="submit" class="btn">Sign up</button>
+      <button type="button" class="btn" onclick="handleSignup()">Sign up</button>
     </form>
     <p class="login-footer">Already have an account? <a href="login.html">Log in</a></p>
   </div>
+
+  <script>
+    function handleSignup() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      const emailError = document.getElementById('email-error');
+      const passwordError = document.getElementById('password-error');
+      const confirmError = document.getElementById('confirm-password-error');
+
+      emailError.textContent = '';
+      passwordError.textContent = '';
+      confirmError.textContent = '';
+
+      let isValid = true;
+
+      // Email must contain an @ symbol with characters on each side
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        emailError.textContent = 'Enter a valid email address.';
+        isValid = false;
+      }
+
+      // Password: at least 8 characters, one letter, one number
+      const hasMinLength = password.length >= 8;
+      const hasLetter = /[A-Za-z]/.test(password);
+      const hasNumber = /[0-9]/.test(password);
+      if (!hasMinLength || !hasLetter || !hasNumber) {
+        passwordError.textContent = 'Password must be at least 8 characters and include a letter and a number.';
+        isValid = false;
+      }
+
+      // Confirm password must match
+      if (password !== confirmPassword) {
+        confirmError.textContent = 'Passwords do not match.';
+        isValid = false;
+      }
+
+      if (isValid) {
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
 
 </body>
 </html>
