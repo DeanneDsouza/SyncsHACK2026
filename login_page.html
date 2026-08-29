@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-overlay-top: rgba(10, 14, 20, 0.35);
+    --color-overlay-bottom: rgba(10, 14, 20, 0.85);
+    --color-text: #f5f2ea;
+    --color-text-muted: rgba(245, 242, 234, 0.68);
+    --color-accent: #c9a668;
+    --color-line: rgba(245, 242, 234, 0.28);
+    --font-display: "Fraunces", serif;
+    --font-body: "Inter", sans-serif;
+  }
+
+  *, *::before, *::after{ box-sizing: border-box; }
+
+  html, body{
+    height: 100%;
+    margin: 0;
+  }
+
+  body{
+    font-family: var(--font-body);
+    color: var(--color-text);
+
+    /* ---------------------------------------------------------
+       BACKGROUND IMAGE: replace the url() below with your image.
+       Example: background-image: url("images/hero-bg.jpg");
+       --------------------------------------------------------- */
+    background-image:
+      linear-gradient(to bottom, var(--color-overlay-top), var(--color-overlay-bottom)),
+      url("");
+    background-color: #12161d; /* fallback shown until an image is added */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 8vh 1.5rem 4rem;
+    text-align: center;
+  }
+
+  .logo{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.75rem, 8vw, 4.5rem);
+    letter-spacing: 0.01em;
+    margin: 0 0 0.5rem;
+    line-height: 1;
+  }
+
+  .tagline{
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 3.5rem;
+  }
+
+  .auth-links{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.05rem;
+  }
+
+  .auth-links a{
+    color: var(--color-text);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .auth-links a:hover,
+  .auth-links a:focus-visible{
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .auth-links a:focus-visible{
+    outline: none;
+  }
+
+  .divider{
+    width: 1px;
+    height: 1rem;
+    background: var(--color-line);
+  }
+
+  .signup-link{
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo">Your Logo</div>
+  <p class="tagline">Welcome back</p>
+
+  <nav class="auth-links" aria-label="Account">
+    <a href="/login">Log in</a>
+    <span class="divider" aria-hidden="true"></span>
+    <a href="/signup" class="signup-link">Sign up</a>
+  </nav>
+
+</body>
+</html>
