@@ -275,7 +275,7 @@ aside{ font-family: var(--font-ui); font-size: 0.95rem; }
 body.login-page{
   background-image:
     linear-gradient(to bottom, var(--color-overlay-top), var(--color-overlay-bottom)),
-    url("");
+    url("{{ url_for('static', filename='BWF-logo.jpg') }}");
   background-color: var(--color-bg);
   background-size: cover;
   background-position: center;
@@ -632,5 +632,3 @@ body.login-page{
 @media (max-width: 700px){
   .wiki-infobox{ float: none; width: 100%; margin: 0 0 var(--space-3); }
 }
-
-
