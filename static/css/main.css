@@ -2,7 +2,7 @@
    1. TOKENS & BASE
    ========================================================== */
 :root{
-  --color-bg: #12161d;
+  --color-bg: #071228;
   --color-bg-alt: #1b212b;
   --color-text: #f5f2ea;
   --color-text-muted: rgba(245, 242, 234, 0.68);
@@ -80,12 +80,20 @@ p{ margin: 0 0 var(--space-2); }
   gap: var(--space-3);
   padding-block: var(--space-2);
 }
-.site-logo{
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 5.35rem;
-  text-decoration: none;
-  color: var(--color-text);
+.site-logo {
+  background-image: url("BWF-logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 500px;
+  height: 500px;
+}
+
+.site-logo-small {
+  background-image: url("BWF-logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
 }
 .site-nav ul{
   list-style: none;
