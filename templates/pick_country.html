@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Choose a Country | Before We Forget{% endblock %}
+
+{% block content %}
+
+<div class="topbar">
+  <button onclick="window.location.href='{{ url_for('homepage') }}'">Home</button>
+  <span class="top-title">Before We Forget</span>
+</div>
+
+<div class="sidebar">
+  <a href="{{ url_for('crafts') }}">Art &amp; Crafts</a>
+  <a href="{{ url_for('literature') }}">Literature</a>
+  <a href="{{ url_for('music') }}">Music</a>
+  <a href="{{ url_for('pickCountry') }}" aria-current="page">Change Country</a>
+  <a href="{{ url_for('logout') }}">Log out</a>
+</div>
+
+<div class="dashboard-content">
+  <div class="container">
+
+    <p class="eyebrow">Explore Across Cultures</p>
+    <h1>Choose a Country</h1>
+    <p style="font-family: var(--font-ui); color: var(--color-text-muted);">
+      Discover traditions, forgotten knowledge and cultural memories preserved across different parts of the world.
+    </p>
+
+    <div class="card-grid">
+
+      <form method="POST" action="{{ url_for('pickCountry') }}">
+        <input type="hidden" name="country" value="Australia">
+        <button type="submit" class="card-button">
+          <div class="card">
+            <img src="{{ url_for('static', filename='ausART.jpg') }}" alt="Australia">
+            <div class="card-body">
+              <h3>Australia</h3>
+              <p>Explore stories, traditions and knowledge shaped by one of the world's oldest continuous cultures.</p>
+            </div>
+          </div>
+        </button>
+      </form>
+
+      <form method="POST" action="{{ url_for('pickCountry') }}">
+        <input type="hidden" name="country" value="China">
+        <button type="submit" class="card-button">
+          <div class="card">
+            <img src="{{ url_for('static', filename='chMUSIC.jpg') }}" alt="China">
+            <div class="card-body">
+              <h3>China</h3>
+              <p>Rediscover crafts, literature and historical knowledge carried across thousands of years.</p>
+            </div>
+          </div>
+        </button>
+      </form>
+
+      <form method="POST" action="{{ url_for('pickCountry') }}">
+        <input type="hidden" name="country" value="India">
+        <button type="submit" class="card-button">
+          <div class="card">
+            <img src="{{ url_for('static', filename='indLIT.jpg') }}" alt="India">
+            <div class="card-body">
+              <h3>India</h3>
+              <p>Explore ancient traditions, cultural memory and knowledge preserved through generations.</p>
+            </div>
+          </div>
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

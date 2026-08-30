@@ -1,0 +1,98 @@
+{# Shared Wikipedia-style article layout.
+   Expects in context: art (normalized record dict or None),
+   country, category_label. Included by home_page.html,
+   craft_page.html, Literature_page.html, music.html. #}
+
+{% if art %}
+<article class="wiki-article">
+
+  <h1>{{ art.name }}</h1>
+  <p class="wiki-subtitle">{{ category_label }} &middot; {{ country }}</p>
+  <hr class="wiki-lead-rule">
+
+  <aside class="wiki-infobox">
+    {% if art.image_url %}
+      <img src="{{ art.image_url }}" alt="{{ art.name }}">
+    {% endif %}
+    <div class="wiki-infobox-title">{{ art.name }}</div>
+    <table>
+      <tr><th>Country</th><td>{{ country }}</td></tr>
+      <tr><th>Category</th><td>{{ category_label }}</td></tr>
+      {% if art.inscription_year %}
+        <tr><th>UNESCO inscribed</th><td>{{ art.inscription_year }}</td></tr>
+      {% endif %}
+      {% if art.concepts %}
+        <tr><th>Related concepts</th><td>{{ art.concepts | join(', ') }}</td></tr>
+      {% endif %}
+    </table>
+  </aside>
+
+  <nav class="wiki-toc" aria-label="Contents">
+    <div class="wiki-toc-title">Contents</div>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      {% if art.sections %}
+        <li><a href="#history">History</a></li>
+      {% endif %}
+      <li><a href="#tutorial">Tutorial</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#connect">Connect with Other People</a></li>
+    </ol>
+  </nav>
+
+  <section class="wiki-section" id="overview">
+    <h2>Overview</h2>
+    <p>{{ art.sections.overview if art.sections else art.description }}</p>
+  </section>
+
+  {% if art.sections %}
+
+    <section class="wiki-section" id="history">
+      <h2>History</h2>
+      <p>{{ art.sections.history }}</p>
+    </section>
+
+    <p class="ai-note">
+      The sections above were organized and expanded by AI from UNESCO's
+      official description, shown in full under References below - they
+      are not an independently verified source.
+    </p>
+
+  {% endif %}
+
+  <section class="wiki-section" id="tutorial">
+    <h2>Tutorial</h2>
+    {# TODO: step-by-step "how to recreate this" content goes here.
+       Not AI-generated yet - see ai_helper.py for how overview/history
+       are wired up; do the same here with a new prompt + cache key
+       once ready. #}
+  </section>
+
+  <section class="wiki-section" id="references">
+    <h2>References</h2>
+    <ul class="wiki-references">
+      <li>UNESCO Intangible Cultural Heritage description: &ldquo;{{ art.description }}&rdquo;</li>
+      {% if art.source_url %}
+        <li><a href="{{ art.source_url }}" target="_blank" rel="nofollow">View official UNESCO record</a></li>
+      {% endif %}
+    </ul>
+  </section>
+
+  <section class="wiki-section" id="connect">
+    <h2>Connect with Other People</h2>
+    <p>Connect with people who are still preserving and practising traditional {{ category_label | lower }} today.</p>
+    <a href="https://www.facebook.com/groups/bobbinlacemakers/" target="_blank" rel="external nofollow">
+      Visit Cultural Community
+    </a>
+  </section>
+
+</article>
+
+{% else %}
+
+<div class="widget">
+  <h2>No Record Found</h2>
+  <p>No UNESCO {{ category_label | lower }} record was found for {{ country }} today.</p>
+</div>
+
+{% endif %}
