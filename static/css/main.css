@@ -285,7 +285,7 @@ aside{ font-family: var(--font-ui); font-size: 0.95rem; }
 body.login-page{
   background-image:
     linear-gradient(to bottom, var(--color-overlay-top), var(--color-overlay-bottom)),
-    url("BWF-logo.jpg");
+    url("");
   background-color: var(--color-bg);
   background-size: cover;
   background-position: center;
